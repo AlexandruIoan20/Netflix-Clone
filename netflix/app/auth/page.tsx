@@ -2,8 +2,11 @@
 
 import Input from "../components/inputs/Input"; 
 import { useCallback, useState } from "react";
+import { signIn } from 'next-auth/react'; 
+import { useRouter } from "next/navigation";
 
 const Auth = () => {
+    const router = useRouter(); 
     const [ email, setEmail ] = useState<string> (""); 
     const [ name, setName ] = useState <string> (""); 
     const [ password, setPassword ] = useState <string> (""); 
@@ -13,6 +16,39 @@ const Auth = () => {
     const toggleVariant = useCallback( () => { 
         setVariant(currentVariant => currentVariant === 'login' ? 'register' : 'login')
     }, []);
+
+    const login = useCallback(async () => { 
+        try { 
+            await signIn('credentials', { 
+                email, password, 
+                redirect: false, 
+                callbackUrl: "/"
+            }); 
+
+            router.push("/"); 
+        } catch(err) { 
+            console.log(err); 
+        }
+    }, [ email, password ]); 
+
+    const register = useCallback( async () => { 
+        try { 
+            const response = await fetch("/api/register", { 
+                method: "POST", 
+                mode: "cors", 
+                body: JSON.stringify({ 
+                    email, name, password, 
+                }), 
+                headers: { 
+                    'Content-Type': "application/json"
+                }
+            }); 
+
+            login(); 
+        } catch(err) { 
+            console.log(err); 
+        }
+    }, [email, name, password, login]); 
     
   return (
     <div className = "relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
@@ -50,7 +86,7 @@ const Auth = () => {
                             type = "password"
                         />
                     </div>
-                    <button className = {`
+                    <button onClick = { variant === 'login' ? login : register } className = {`
                             bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition
                         `}> 
                         { variant === 'login' ? 'Login' : 'Sign Up'} 
