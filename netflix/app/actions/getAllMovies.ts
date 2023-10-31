@@ -15,4 +15,6 @@ const getAllMovies = async  () => {
         console.log(err); 
         return null; 
     }
-}
+}; 
+
+export default getAllMovies; 
