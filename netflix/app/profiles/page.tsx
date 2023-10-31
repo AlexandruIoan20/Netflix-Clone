@@ -9,7 +9,7 @@ const Profiles = async () => {
             <h1 className = 'text-3xl md:text-6xl text-white text-center'>
                 Who is watching?
             </h1>
-            <ProfileGroup currentUser = { currentUser } /> 
+            <ProfileGroup currentUser = { currentUser! } /> 
         </div>
     </div>
   )
