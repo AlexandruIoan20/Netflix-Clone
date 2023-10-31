@@ -20,4 +20,6 @@ const getCurrentUser = async () => {
         console.log(err); 
         return null; 
     }
-}
+}; 
+
+export default getCurrentUser; 

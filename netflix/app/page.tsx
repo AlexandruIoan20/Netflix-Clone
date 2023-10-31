@@ -1,11 +1,12 @@
-'use client'; 
+import getCurrentUser from "./actions/getCurrentUser";
+import LogoutButton from "./components/LogoutButton";
 
-import { signOut } from "next-auth/react";
-
-const HomePage = () => {
+const HomePage = async () => {
+  const currentUser = await getCurrentUser(); 
   return (
     <div className = ''>
-      <button onClick={ () => { signOut()}} className = 'h-10 w-full bg-white'> Logout! </button>
+      <p className ='text-white'> { JSON.stringify(currentUser)} </p>
+      <LogoutButton /> 
     </div>
   )
 }
