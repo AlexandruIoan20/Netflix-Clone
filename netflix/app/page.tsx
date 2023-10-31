@@ -2,12 +2,12 @@
 
 import { signOut } from "next-auth/react";
 
-const page = () => {
+const HomePage = () => {
   return (
-    <div className = 'text-center font-semibold'>
-      <button onClick={ () => { signOut()}} className = 'bg-white'> log out </button>
+    <div className = ''>
+      <button onClick={ () => { signOut()}} className = 'h-10 w-full bg-white'> Logout! </button>
     </div>
   )
 }
 
-export default page
+export default HomePage
