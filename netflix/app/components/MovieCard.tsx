@@ -3,6 +3,7 @@ import React from 'react';
 import { Movie, User } from '@prisma/client';
 import { BsFillPlayFill } from 'react-icons/bs';
 import FavoriteButton from './FavoriteButton';
+import { useRouter } from 'next/navigation';
 
 interface Props { 
     movie: Movie, 
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const MovieCard = ({ movie, currentUser }: Props) => {
+    const router = useRouter(); 
   return (
     <div className = 'group bg-zinc-900 col-span relative h-[12vw]'>
         <img 
@@ -61,7 +63,7 @@ const MovieCard = ({ movie, currentUser }: Props) => {
                 <div className = 'flex flex-row items-center'>
                     <div 
                         className = 'cursor-pointer w-6 h-6 lg:w-10 lg:h-10 bg-white rounded-full flex justify-center items-center transition hover:bg-neutral-300'
-                        onClick = { () => { }}>
+                        onClick = { () => { router.push(`/watch/${movie?.id}`) }}>
                         <BsFillPlayFill className = 'w-6 h-6'/> 
                     </div>
                     <FavoriteButton currentUser = { currentUser } movieId = { movie.id } /> 
