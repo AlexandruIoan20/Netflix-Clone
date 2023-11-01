@@ -50,7 +50,7 @@ export const DELETE = async (request: Request) => {
             return new NextResponse('Not found', { status: 404 }); 
         }
 
-        const updateFavoriteIds = without(currentUser?.favouriteIds); 
+        const updateFavoriteIds = without(currentUser?.favouriteIds, movieId); 
         const updatedUser = await prismadb.user.update({ 
             where: { 
                 id: currentUser?.id, 

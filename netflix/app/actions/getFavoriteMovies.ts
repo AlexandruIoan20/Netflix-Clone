@@ -29,4 +29,4 @@ const getFavouriteMovies = async () => {
     }
 }; 
 
-export const getFavouriteMovies; 
+export default getFavouriteMovies; 

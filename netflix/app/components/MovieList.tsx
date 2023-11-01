@@ -1,15 +1,16 @@
 'use client'
 
-import { Movie } from "@prisma/client";
+import { Movie, User } from "@prisma/client";
 import { isEmpty } from "lodash"; 
 import MovieCard from "./MovieCard";
 
 interface Props { 
     movies: Movie [], 
     title: string, 
+    currentUser: User, 
 }
 
-const MovieList = ({ movies, title }: Props ) => {
+const MovieList = ({ movies, title, currentUser}: Props ) => {
     if(isEmpty(movies)) { 
         return null; 
     }
@@ -22,7 +23,7 @@ const MovieList = ({ movies, title }: Props ) => {
             <div className = 'grid grid-cols-4 gap-2'>
                 { movies.map(movie => { 
                     return ( 
-                        <MovieCard key = { movie.id } movie = { movie } />
+                        <MovieCard currentUser = { currentUser } key = { movie.id } movie = { movie } />
                     )
                 })}
             </div>

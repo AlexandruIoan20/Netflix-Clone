@@ -1,13 +1,15 @@
 import React from 'react'; 
 
-import { Movie } from '@prisma/client';
+import { Movie, User } from '@prisma/client';
 import { BsFillPlayFill } from 'react-icons/bs';
+import FavoriteButton from './FavoriteButton';
 
 interface Props { 
     movie: Movie, 
+    currentUser: User
 }
 
-const MovieCard = ({ movie }: Props) => {
+const MovieCard = ({ movie, currentUser }: Props) => {
   return (
     <div className = 'group bg-zinc-900 col-span relative h-[12vw]'>
         <img 
@@ -62,6 +64,7 @@ const MovieCard = ({ movie }: Props) => {
                         onClick = { () => { }}>
                         <BsFillPlayFill className = 'w-6 h-6'/> 
                     </div>
+                    <FavoriteButton currentUser = { currentUser } movieId = { movie.id } /> 
                 </div>
 
                 <p className = 'text-green-400 font-semibold mt-4 cursor-default'>
