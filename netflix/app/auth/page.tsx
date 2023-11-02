@@ -1,5 +1,7 @@
 'use client'; 
 
+export const dynamic = 'force-dynamic'
+
 import Input from "../../components/inputs/Input"; 
 import { useCallback, useState } from "react";
 import { signIn } from 'next-auth/react'; 

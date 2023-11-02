@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import Navbar from "@/components/navbar/Navbar"
 import getRandomMovie from "./actions/getRandomMovie"
 import Bilboard from "./components/Bilboard"; 

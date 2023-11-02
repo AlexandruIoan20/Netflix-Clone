@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import React from 'react'; 
 import getMovie from '@/app/actions/getMovie';
 import BackButton from './components/BackButton';
