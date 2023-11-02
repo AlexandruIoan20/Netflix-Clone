@@ -15,7 +15,7 @@
     "@tailwindcss/forms": "^0.5.6",
     "bcrypt": "^5.1.1",
     "lodash": "^4.17.21",
-    "next": "14.0.0",
+    "next": "^13.4.19",
     "next-auth": "^4.24.4",
     "postinstall": "^0.8.0",
     "react": "^18",
