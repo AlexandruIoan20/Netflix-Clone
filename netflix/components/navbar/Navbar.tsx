@@ -5,10 +5,11 @@ import NavbarItem from './NavbarItem';
 import MenuHolder from './MenuHolder'; 
 
 import { BsSearch, BsBell  } from 'react-icons/bs';
+import { User } from '@prisma/client';
 
 const TOP_OFFSET = 66; 
 
-const Navbar = () => {
+const Navbar = ({ currentUser }: { currentUser: User }) => {
     const [ showBackround, setShowBackgorund ] = useState <boolean> (false); 
 
     useEffect( () => { 
@@ -45,7 +46,7 @@ const Navbar = () => {
                 <NavbarItem label = "My List" /> 
                 <NavbarItem label = "Browse by languages" /> 
             </div>
-            <MenuHolder>
+            <MenuHolder currentUser = { currentUser! }>
                 <div className = 'flex flex-row ml-auto gap-7 items-center'>
                     <div className = 'text-gray-200 hover:text-gray-300 cursor-pointer transition'>
                         <BsSearch /> 

@@ -4,12 +4,14 @@ import MobileMenu from './MobileMenu';
 import { useCallback, useState } from 'react';
 import { BsChevronDown } from 'react-icons/bs'; 
 import AccountMenu from './AccountMenu';
+import { User } from '@prisma/client';
 
 interface Props { 
     children: React.ReactNode, 
+    currentUser: User
 }
 
-const MenuHolders = ({ children }: Props) => {
+const MenuHolders = ({ children, currentUser }: Props) => {
     const [ showMobileMenu, setShowMobileMenu ] = useState <boolean> (false); 
     const [ showAccountMenu, setShowAccountMenu ] = useState <boolean> (false);
 
@@ -34,7 +36,7 @@ const MenuHolders = ({ children }: Props) => {
         <div className = 'w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden flex-row'>
             <img src="/images/default-green.png" alt="avatar" />
             <BsChevronDown className = { `text-white transition ${showAccountMenu ?  'rotate-180' : 'rotate-0'}`} /> 
-            <AccountMenu visible = { showAccountMenu } /> 
+            <AccountMenu currentUser = { currentUser } visible = { showAccountMenu } /> 
         </div>
       </div>
     </>

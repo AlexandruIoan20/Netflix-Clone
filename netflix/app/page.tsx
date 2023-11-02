@@ -14,8 +14,8 @@ const HomePage = async () => {
   
   return (
     <>
-      <Navbar /> 
-      <Bilboard movie = { randomMovie! } /> 
+      <Navbar currentUser = { currentUser! } /> 
+      <Bilboard currentUser = { currentUser! } movie = { randomMovie! } /> 
       <div className = 'pb-40'>
         <MovieList currentUser = { currentUser! } movies = { movies! } title = "Trending Now" /> 
         <MovieList currentUser =  { currentUser! } movies = { favourteMovies! } title = "My List" /> 
